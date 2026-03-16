@@ -1,22 +1,24 @@
 <?php
-session_start(); // Mulakan session sekali sahaja di sini
+session_start();
 
-$current = $_GET['menu'] ?? 'utama';
+$menu = $_GET['menu'] ?? 'utama';
 
-// Kawal routing halaman modular
-switch($current){
-    case 'utama':
-        include "pages/utama.php";
-        break;
+include "layout/header.php";
 
-    case 'tempah':
-        include "pages/tempah.php";
-        break;
-
-    case 'invois':
-        include "pages/invois.php";
-        break;
-
-    default:
-        echo "Menu tidak wujud";
+if($menu == "utama"){
+    include "pages/utama.php";
 }
+
+elseif($menu == "tempah"){
+    include "pages/tempah.php";
+}
+
+elseif($menu == "invois"){
+    include "pages/invois.php";
+}
+
+else{
+    echo "<h1>Halaman tidak wujud</h1>";
+}
+
+include "layout/footer.php";
