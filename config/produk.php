@@ -6,7 +6,7 @@ $data = [
         'nama' => 'Kuih Semperit',
         'gambar' => 'kuih_semperit.png',
         'harga' => [
-            'pek_mini' => 2.00,
+            'pekmini' => 2.00,
             'kecil' => 17.00,
             'besar' => 34.00
         ]
@@ -16,7 +16,7 @@ $data = [
         'nama' => 'Biskut Mazola',
         'gambar' => 'biskut_mazola.png',
         'harga' => [
-            'pek_mini' => 2.00,
+            'pekmini' => 2.00,
             'kecil' => 20.00,
             'besar' => 40.00
         ]
@@ -26,7 +26,7 @@ $data = [
         'nama' => 'Buah Pinggang',
         'gambar' => 'buah_pinggang.jpg',
         'harga' => [
-            'pek_mini' => 2.00,
+            'pekmini' => 2.00,
             'kecil' => 22.00,
             'besar' => 44.00
         ]
@@ -36,7 +36,7 @@ $data = [
         'nama' => 'Tart Nanas',
         'gambar' => 'tart_nanas.png',
         'harga' => [
-            'pek_mini' => 2.00,
+            'pekmini' => 2.00,
             'kecil' => 25.00,
             'besar' => 50.00
         ]

@@ -5,20 +5,21 @@ $menu = $_GET['menu'] ?? 'utama';
 
 include "layout/header.php";
 
-if($menu == "utama"){
-    include "pages/utama.php";
-}
+switch($menu){
+    case "utama":
+        include "pages/utama.php";
+        break;
 
-elseif($menu == "tempah"){
-    include "pages/tempah.php";
-}
+    case "tempah":
+        include "pages/tempah.php";
+        break;
 
-elseif($menu == "invois"){
-    include "pages/invois.php";
-}
+    case "invois":
+        include "pages/invois.php";
+        break;
 
-else{
-    echo "<h1>Halaman tidak wujud</h1>";
+    default:
+        echo "<h1>Halaman tidak wujud</h1>";
 }
 
 include "layout/footer.php";
