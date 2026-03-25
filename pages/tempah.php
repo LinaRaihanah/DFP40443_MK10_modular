@@ -8,11 +8,9 @@
 
 <h3><?= $produk['nama'] ?></h3>
 
-<?php foreach($produk['harga'] as $saiz => $harga): ?>
+<?php foreach($produk['harga'] as $saiz=>$harga): ?>
 
-<label>
-<?= ucfirst($saiz) ?> (RM <?= number_format($harga,2) ?>)
-</label>
+<label><?= ucfirst($saiz) ?> (RM <?= number_format($harga,2) ?>)</label>
 
 <input type="number"
 name="tempahan[<?= $produk['id'] ?>][<?= $saiz ?>]"

@@ -2,56 +2,62 @@
 session_start();
 include "../config/produk.php";
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
+if($_SERVER["REQUEST_METHOD"]=="POST"){
 
-    $namapelanggan = htmlspecialchars(trim($_POST['namapelanggan']));
-    $tempahaninput = $_POST['tempahan'] ?? [];
+$namapelanggan=htmlspecialchars(trim($_POST['namapelanggan']));
+$tempahan=$_POST['tempahan']??[];
 
-    $itemtempahan = [];
-    $jumlahbesar = 0;
+$item=[];
+$total=0;
 
-    foreach ($tempahaninput as $produkid => $saizlist) {
+foreach($tempahan as $id=>$saizlist){
 
-        foreach ($data as $p) {
-            if ($p['id'] == $produkid) {
+foreach($data as $p){
 
-                foreach ($saizlist as $saiz => $qty) {
+if($p['id']==$id){
 
-                    $qty = (int)$qty;
+foreach($saizlist as $saiz=>$qty){
 
-                    if ($qty > 0) {
+$qty=(int)$qty;
 
-                        $harga = $p['harga'][$saiz];
-                        $jumlah = $qty * $harga;
+if($qty>0){
 
-                        $itemtempahan[] = [
-                            'namaproduk' => $p['nama'],
-                            'saiz' => ucfirst($saiz),
-                            'hargaseunit' => $harga,
-                            'kuantiti' => $qty,
-                            'jumlahharga' => $jumlah
-                        ];
+$harga=$p['harga'][$saiz];
+$jumlah=$qty*$harga;
 
-                        $jumlahbesar += $jumlah;
-                    }
-                }
-            }
-        }
-    }
+$item[]=[
+'namaproduk'=>$p['nama'],
+'saiz'=>ucfirst($saiz),
+'hargaseunit'=>$harga,
+'kuantiti'=>$qty,
+'jumlahharga'=>$jumlah
+];
 
-    if ($jumlahbesar == 0) {
-        header("Location: ../index.php?menu=tempah");
-        exit();
-    }
+$total+=$jumlah;
 
-    $_SESSION['invoisdata'] = [
-        'noinvois' => 'INV-' . rand(10000,99999),
-        'namapelanggan' => $namapelanggan,
-        'tarikh' => date("d/m/Y"),
-        'items' => $itemtempahan,
-        'jumlahbesar' => $jumlahbesar
-    ];
+}
 
-    header("Location: ../index.php?menu=invois");
-    exit();
+}
+
+}
+
+}
+
+}
+
+if($total==0){
+header("Location: ../index.php?menu=tempah");
+exit();
+}
+
+$_SESSION['invoisdata']=[
+'noinvois'=>'INV-'.rand(10000,99999),
+'namapelanggan'=>$namapelanggan,
+'tarikh'=>date("d/m/Y"),
+'items'=>$item,
+'jumlahbesar'=>$total
+];
+
+header("Location: ../index.php?menu=invois");
+exit();
 }
