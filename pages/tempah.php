@@ -2,32 +2,41 @@
 
 <h1>Borang Tempahan</h1>
 
-<form method="POST" action="process/tempah_process.php">
+<form method="POST" action="process/tempah_process.php" onsubmit="return semakTempahan()">
 
-<?php foreach($data as $produk): ?>
+<?php foreach ($data as $produk): ?>
 
-<h3><?= $produk['nama'] ?></h3>
+    <h3><?= $produk['nama'] ?></h3>
 
-<?php foreach($produk['harga'] as $saiz=>$harga): ?>
+    <?php foreach ($produk['harga'] as $saiz => $harga): ?>
 
-<label><?= ucfirst($saiz) ?> (RM <?= number_format($harga,2) ?>)</label>
+        <label>
+            <?= ucfirst($saiz) ?> (RM <?= number_format($harga, 2) ?>)
+        </label>
 
-<input type="number"
-name="tempahan[<?= $produk['id'] ?>][<?= $saiz ?>]"
-value="0"
-min="0"
-data-price="<?= $harga ?>"
-class="qty-input">
+        <input 
+            type="number"
+            name="tempahan[<?= $produk['id'] ?>][<?= $saiz ?>]"
+            value="0"
+            min="0"
+            data-price="<?= $harga ?>"
+            class="qty-input"
+        >
 
-<br>
+        <br>
 
-<?php endforeach; ?>
+    <?php endforeach; ?>
 
 <?php endforeach; ?>
 
 <h3>Jumlah: <span id="total-price">RM 0.00</span></h3>
 
-<input type="text" name="namapelanggan" placeholder="Nama" required>
+<input 
+    type="text" 
+    name="namapelanggan" 
+    placeholder="Nama" 
+    required
+>
 
 <button type="submit">Teruskan</button>
 

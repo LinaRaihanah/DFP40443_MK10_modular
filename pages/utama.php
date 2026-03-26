@@ -4,10 +4,10 @@
 
 <div class="produk-list">
 
-<?php foreach($data as $produk): ?>
+    <?php foreach ($data as $produk): ?>
 
-<img src="gambar/<?= $produk['gambar'] ?>">
+        <img src="gambar/<?= $produk['gambar'] ?>">
 
-<?php endforeach; ?>
+    <?php endforeach; ?>
 
 </div>
