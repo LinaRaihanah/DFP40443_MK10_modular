@@ -14,29 +14,29 @@ $inv = $_SESSION['invoisdata'];
 
 <table border="1">
 
-<tr>
-    <th>Produk</th>
-    <th>Saiz</th>
-    <th>Harga</th>
-    <th>Qty</th>
-    <th>Jumlah</th>
-</tr>
+    <tr>
+        <th>Produk</th>
+        <th>Saiz</th>
+        <th>Harga</th>
+        <th>Kuantiti</th>
+        <th>Jumlah</th>
+    </tr>
 
-<?php foreach ($inv['items'] as $i): ?>
+    <?php foreach ($inv['items'] as $i): ?>
 
-<tr>
-    <td><?= $i['namaproduk'] ?></td>
-    <td><?= $i['saiz'] ?></td>
-    <td><?= number_format($i['hargaseunit'], 2) ?></td>
-    <td><?= $i['kuantiti'] ?></td>
-    <td><?= number_format($i['jumlahharga'], 2) ?></td>
-</tr>
+        <tr>
+            <td><?= $i['namaproduk'] ?></td>
+            <td><?= $i['saiz'] ?></td>
+            <td><?= number_format($i['hargaseunit'], 2) ?></td>
+            <td><?= $i['kuantiti'] ?></td>
+            <td><?= number_format($i['jumlahharga'], 2) ?></td>
+        </tr>
 
-<?php endforeach; ?>
+    <?php endforeach; ?>
 
-<tr>
-    <td colspan="4">Total</td>
-    <td><?= number_format($inv['jumlahbesar'], 2) ?></td>
-</tr>
+    <tr>
+        <td colspan="4">Total</td>
+        <td><?= number_format($inv['jumlahbesar'], 2) ?></td>
+    </tr>
 
 </table>
