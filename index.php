@@ -1,21 +1,25 @@
 <?php
 session_start();
+include "data_produk.php";
+include "header.php";
 
 $menu = $_GET['menu'] ?? 'utama';
 
-include "layout/header.php";
+switch ($menu) {
+    case 'utama':
+        include "utama.php";
+        break;
+    case 'tempah':
+        include "tempah.php";
+        break;
+    case 'invois':
+        include "invois.php";
+        break;
+    default:
+        include "utama.php";
 
-if ($menu == "utama") {
-    include "pages/utama.php";
 }
-elseif ($menu == "tempah") {
-    include "pages/tempah.php";
-}
-elseif ($menu == "invois") {
-    include "pages/invois.php";
-}
-else {
-    echo "<h1>Halaman tidak wujud</h1>";
-}
+include "footer.php";
+?>
+   
 
-include "layout/footer.php";
